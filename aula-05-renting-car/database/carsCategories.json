@@ -1,1 +1,11 @@
-[{"id":"5b97acf9-37cc-4e82-a6c9-e75186c70111","name":"Hatchback","carIds":["a64f3b22-d1d5-49b3-a213-b735d96f6928","7f6d90e6-6d45-4f11-99f1-3af6c47e6b25"],"price":90.46}]
+[
+  {
+    "id": "5b97acf9-37cc-4e82-a6c9-e75186c70111",
+    "name": "Hatchback",
+    "carIds": [
+      "a64f3b22-d1d5-49b3-a213-b735d96f6928",
+      "7f6d90e6-6d45-4f11-99f1-3af6c47e6b25"
+    ],
+    "price": 90.46
+  }
+]
