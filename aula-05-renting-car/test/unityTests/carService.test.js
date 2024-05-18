@@ -3,6 +3,7 @@ const CarService = require("../../src/service/carService")
 const { join } = require('path')
 const { expect } = require("chai")
 const Sinon = require("sinon")
+const Transaction = require("../../src/entites/transaction")
 
 const carDataBase = join(__dirname, './../../database', 'cars.json')
 
@@ -68,6 +69,60 @@ describe('carService', () => {
     const expected = car
 
     expect(carService.chooseRandomCar.calledOnce)
+    expect(result).to.be.deep.equal(expected)
+  })
+
+  it('given a carCategory, customer and numberOfDays it should calculate the final amount in real', async () => {
+    const customer = Object.create(mocks.validCustomer)
+    customer.age = 50
+
+    const carCategory = Object.create(mocks.validCarCategory)
+    carCategory.price = 37.6
+
+    const numberOfDays = 5
+
+    sandbox.stub(
+      carService,
+      'taxesBasedOnAge'
+    ).get(() => [{ from: 40, to: 50, then: 1.3 }])
+
+    const expected = carService.currencyFormat.format(244.40)
+    const result = carService.calculateFinalPrice(
+      customer,
+      carCategory,
+      numberOfDays
+    )
+
+    expect(expected).to.be.deep.equal(result)
+  })
+
+  it('given a customer and a car category it should return a transaction receipt', async () => {
+    const car = mocks.validCar
+    const carCategory = {
+      ...mocks.validCarCategory,
+      price: 37.6,
+      carIds: [car.id]
+    }
+
+    const customer = Object.create(mocks.validCustomer)
+    customer.age = 20
+
+    const numberOfDays = 5
+    const dueDate = '10 de novembro de 2020'
+
+    const now = new Date(2020, 10, 5)
+    sandbox.useFakeTimers(now.getTime())
+
+    sandbox.stub(
+      carService.carRepository,
+      carService.carRepository.find.name
+    ).resolves(car)
+
+    const expectedAmount = carService.currencyFormat.format(206.80)
+    const result =  await carService.rent(customer, carCategory, numberOfDays)
+
+    const expected = new Transaction({customer, car, amount: expectedAmount, dueDate})
+
     expect(result).to.be.deep.equal(expected)
   })
 })
