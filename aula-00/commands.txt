@@ -1,6 +1,0 @@
-nvm install versao-> instala uma nova versão
-nvm install --lts -> instala o long-term-suport(lts => versao recomendada)
-nvm list -> lista todas as versões
-nvm use versao -> altera a versao
-nvm use $(cat .nvmrc) -> para usar a versão do .nvmrc
-node -v > .nvmrc -> salva a versão atual em um arquivo .nvmrc (respeita a versão que esta especificada no nvmrc do projeto)
