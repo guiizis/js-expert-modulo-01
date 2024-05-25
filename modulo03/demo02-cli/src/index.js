@@ -18,6 +18,8 @@ async function mainLoop() {
     }
 
     const person = Person.generateInstanceFromString(answer)
+    terminalController.updateTable(person.formatted(DEFAULT_LANGUAGE))
+
     return mainLoop()
   
   }catch(e) {

@@ -38,6 +38,11 @@ export default class TerminalController {
     this.terminal.close()
   }
 
+  updateTable(item) {
+    this.data.push(item)
+    this.print(chalkTable(this.getTableOptions(), this.data))
+  }
+
   getTableOptions() {
     return {
       leftPad: 2,
