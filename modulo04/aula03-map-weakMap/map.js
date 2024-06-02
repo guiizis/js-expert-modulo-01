@@ -63,4 +63,6 @@ assert.throws(() => myMap.get(actor).toString, TypeError)
 
 // no Objeto para limparmos ele, precisamos passar prop por prop e dar undefined
 myMap.clear() // limpei todas as chaves
-assert.deepStrictEqual([...myMap.keys()], []) 
+assert.deepStrictEqual([...myMap.keys()], [])
+
+// --weakMap
