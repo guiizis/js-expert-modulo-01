@@ -1,0 +1,42 @@
+regex101.com
+^\d{3}.\d{3}.\d{3}-\d{2}$ => esse regex busca em cada \d 3 numeros . 3 numeros .
+
+=> o vscode entende regex quando eu dou ctrl + f e passo uma regex para a pesquisa
+=> o dolar representa o fim da busca
+=> o ^ representa que o inicio vai ser uma letra
+
+[.-] => para capturar caracteres especiais, está dentro de [] pq o [] significa um ou (ou . ou -)
+
+123.123.123-14
+255.245.852-20
+
+=> exemplo  como se fosse um csv para json:
+/^(\w+),\s(\w+)$
+
+=> () representa que vamos pegar um grupo, ele quebra em grupos, consigo recuperar esses valores depois com $, $1 o conteudo do primeiro grupo e $2 o conteudo do segundo grupo
+=> \w+ para ele pegar toda a palavra ate o caracter especial que no caso é a ','
+=> a ',' proprieamente dita
+=> \s para indicar que vamos ter um espaço
+=> \w+ para indicar que vamos pegar novamente a palavra toda até um caracter especial, nesse caso o fim da linha 
+
+em csv
+teste, teste
+teste, teste
+teste, teste
+
+para converter para json
+=> ctrl + f e sai trocando no replace
+{"firstName": $1, "lastName": $2}
+
+=> exemplo de como transformar um link que esta .md em um link de html
+
+O [teste](https://teste.com) faz testes sobre a vida, siga ele no [Instagram](https://Instagram.com.br/teste)
+
+Voce pode pesquisar sobre ele no [Google](https://google.com.br) ou
+[Yahoo](https://yahoo.com.br)
+
+\[(.*?)\]\(([http|https].*?)\)
+
+onde:
+=> [(.*?)\] para pegar tudo que tem [] e ? é para falar que na primeira ocorrencia de ] é para ele parar
+=> (([http|https].*?) para pegar todos os textos que tenham http ou https e estajam dentro de parenteses
