@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "pdf-parse": "^1.1.1",
-    "pdf-parser": "^1.0.5"
+    "pdf-parser": "^1.0.5",
+    "safe-regex": "^2.1.1"
   }
 }
