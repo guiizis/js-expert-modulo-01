@@ -1,3 +1,4 @@
+const Person = require("./person")
 const { evaluatedRegex } = require("./util")
 
 class TextProcessorFluentApi {
@@ -24,6 +25,11 @@ class TextProcessorFluentApi {
   removeEmptyCharacters() {
     const trimRegex = evaluatedRegex(/^\s+|\s+$|\n/g)
     this.#content = this.#content.map(line => line.map(item => item.replace(trimRegex, "")))
+    return this
+  }
+
+  mapPerson() {
+    this.#content = this.#content.map(line => new Person(line))
     return this
   }
 
