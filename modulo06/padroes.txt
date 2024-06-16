@@ -1,0 +1,3 @@
+KISS => keep it stupid and simple
+DRY => don't repeat yourself
+YAGNI => you arent gonna need it
