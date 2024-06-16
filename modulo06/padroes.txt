@@ -1,3 +1,5 @@
 KISS => keep it stupid and simple
 DRY => don't repeat yourself
 YAGNI => you arent gonna need it
+
+// quando eu tenho um serviço que encapsula a chamada do connect, eu estou fazendo inversão de dependencia do solid?
